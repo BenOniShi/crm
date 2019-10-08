@@ -17,16 +17,16 @@ public class CusDevPlan {
      * 设置前台响应的数据的格式    接收格式  不然会出现400错误
      * 前台没有显示设置   date格式
      */
-    @DateTimeFormat(pattern = "yyyy-MM-DD HH:mm:ss")
-    @JsonFormat(pattern = "yyyy-MM-DD HH:mm:ss", timezone = "GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date planDate;
 
     private String exeAffect;
-    @DateTimeFormat(pattern = "yyyy-MM-DD HH:mm:ss")
-    @JsonFormat(pattern = "yyyy-MM-DD HH:mm:ss", timezone = "GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date createDate;
-    @DateTimeFormat(pattern = "yyyy-MM-DD HH:mm:ss")
-    @JsonFormat(pattern = "yyyy-MM-DD HH:mm:ss", timezone = "GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date updateDate;
 
     private Integer isValid;

@@ -90,7 +90,10 @@ public class CustomerService extends BaseService<Customer, Integer> {
     public void deleteCustomer(Integer id){
         //判断用户是否存在
         AssertsUtils.isTrue(null==id||null==queryById(id),"您选择的删除记录不存在");
-        AssertsUtils.isTrue(delete(id)==0,"删除失败");
+        Customer customer = queryById(id);
+        customer.setIsValid(0);
+        customer.setUpdateDate(new Date());
+        AssertsUtils.isTrue(update(customer)==0,"删除失败");
 
     }
 }

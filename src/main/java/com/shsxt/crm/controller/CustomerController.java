@@ -30,10 +30,10 @@ public class CustomerController extends BaseController {
 
     @RequestMapping("list")
     @ResponseBody
-    public Map<String, Object> queryCustomerByParams(@RequestParam(defaultValue = "1") Integer pageNum,
+    public Map<String, Object> queryCustomerByParams(@RequestParam(defaultValue = "1") Integer page,
                                     @RequestParam(defaultValue = "10") Integer rows,
                                     CustomerQuery customerQuery) {
-        customerQuery.setPageNum(pageNum);
+        customerQuery.setPageNum(page);
         customerQuery.setPageSize(rows);
         return customerService.queryByParamsFroDataGrid(customerQuery);
 

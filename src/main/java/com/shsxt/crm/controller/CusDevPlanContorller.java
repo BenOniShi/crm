@@ -35,11 +35,11 @@ public class CusDevPlanContorller extends BaseController {
 
     @RequestMapping("list")
     @ResponseBody
-    public Map<String,Object>   queryStatedSaleChance(@RequestParam(defaultValue = "1") Integer pageNum,
+    public Map<String,Object>   queryStatedSaleChance(@RequestParam(defaultValue = "1") Integer page,
                                                       @RequestParam(defaultValue = "10")Integer rows,
                                                       SaleChanceQuery saleChanceQuery, HttpServletRequest request){
 
-        saleChanceQuery.setPageNum(pageNum);
+        saleChanceQuery.setPageNum(page);
         saleChanceQuery.setPageSize(rows);
 
         saleChanceQuery.setAssignMan(userSerive.queryById(LoginUserUtil.releaseUserIdFromCookie(request)).getTrueName());

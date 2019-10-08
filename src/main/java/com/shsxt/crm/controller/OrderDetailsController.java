@@ -20,11 +20,11 @@ public class OrderDetailsController {
 
     @RequestMapping("list")
     @ResponseBody
-    public Map<String,Object> queryOrderDatailsByParams(@RequestParam(defaultValue = "1") Integer pageNum,
+    public Map<String,Object> queryOrderDatailsByParams(@RequestParam(defaultValue = "1") Integer page,
                                                         @RequestParam(defaultValue = "10")Integer rows,
                                                         OrderDetailsQuery orderDetailsQuery){
 
-        orderDetailsQuery.setPageNum(pageNum);
+        orderDetailsQuery.setPageNum(page);
         orderDetailsQuery.setPageSize(rows);
         return  orderDetailsService.queryByParamsFroDataGrid(orderDetailsQuery);
     }

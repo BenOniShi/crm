@@ -29,10 +29,10 @@ public class OrderController extends BaseController {
 
     @RequestMapping("list")
     @ResponseBody
-    public Map<String, Object> queryOrderByParams(@RequestParam(defaultValue = "1") Integer pageNum,
+    public Map<String, Object> queryOrderByParams(@RequestParam(defaultValue = "1") Integer page,
                                                   @RequestParam(defaultValue = "10") Integer rows,
                                                   OrderQuery orderQuery,Integer cid) {
-        orderQuery.setPageNum(pageNum);
+        orderQuery.setPageNum(page);
         orderQuery.setPageSize(rows);
         orderQuery.setCid(cid);
         return orderService.queryByParamsFroDataGrid(orderQuery);

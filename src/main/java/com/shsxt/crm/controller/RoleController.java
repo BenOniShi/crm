@@ -35,10 +35,10 @@ public class RoleController extends BaseController {
 
     @RequestMapping("list")
     @ResponseBody
-    public Map<String,Object> queryRoolesByParams(@RequestParam(defaultValue = "1")Integer pageNum,
+    public Map<String,Object> queryRoolesByParams(@RequestParam(defaultValue = "1")Integer page,
                                                   @RequestParam(defaultValue = "10")Integer rows,
                                                   RoleQuery roleQuery){
-        roleQuery.setPageNum(pageNum);
+        roleQuery.setPageNum(page);
         roleQuery.setPageSize(rows);
 
         return roleService.queryByParamsFroDataGrid(roleQuery);

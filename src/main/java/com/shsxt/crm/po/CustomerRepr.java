@@ -1,20 +1,19 @@
 package com.shsxt.crm.po;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
-public class UserRole {
+public class CustomerRepr {
     private Integer id;
 
-    private Integer userId;
+    private Integer lossId;
 
-    private Integer roleId;
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private String measure;
+
+    private Integer isValid;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date createDate;
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date updateDate;
 
@@ -26,20 +25,28 @@ public class UserRole {
         this.id = id;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public Integer getLossId() {
+        return lossId;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setLossId(Integer lossId) {
+        this.lossId = lossId;
     }
 
-    public Integer getRoleId() {
-        return roleId;
+    public String getMeasure() {
+        return measure;
     }
 
-    public void setRoleId(Integer roleId) {
-        this.roleId = roleId;
+    public void setMeasure(String measure) {
+        this.measure = measure == null ? null : measure.trim();
+    }
+
+    public Integer getIsValid() {
+        return isValid;
+    }
+
+    public void setIsValid(Integer isValid) {
+        this.isValid = isValid;
     }
 
     public Date getCreateDate() {

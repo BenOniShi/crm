@@ -4,7 +4,6 @@ import com.shsxt.base.BaseController;
 import com.shsxt.crm.model.ResultInfo;
 import com.shsxt.crm.model.UserModel;
 import com.shsxt.crm.po.User;
-import com.shsxt.crm.po.UserRole;
 import com.shsxt.crm.query.UserQuery;
 import com.shsxt.crm.services.UserSerive;
 import com.shsxt.crm.utils.LoginUserUtil;
@@ -63,10 +62,10 @@ public class UserController extends BaseController {
 
     @RequestMapping("list")
     @ResponseBody
-    public Map<String,Object> queryUserByParams(@RequestParam(defaultValue = "1") Integer pageNum ,
+    public Map<String,Object> queryUserByParams(@RequestParam(defaultValue = "1") Integer page ,
                                                 @RequestParam(defaultValue = "10") Integer rows,
                                                 UserQuery userQuery){
-        userQuery.setPageNum(pageNum);
+        userQuery.setPageNum(page);
         userQuery.setPageSize(rows);
         return userSerive.queryByParamsFroDataGrid(userQuery);
     }
@@ -104,7 +103,9 @@ public class UserController extends BaseController {
     @ResponseBody
     public ResultInfo delateUser(Integer id){
         userSerive.delateUser(id);
+        System.out.println("干什么啊");
         return success("删除成功");
+
     }
 
 }

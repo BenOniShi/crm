@@ -232,8 +232,8 @@ public class UserSerive extends BaseService<User, Integer> {
         }
         //该表user中的 is_vailId的值为0
         userMapper.delete(id);
-        int i =10/0;
-        System.out.println(i);
+
+
     }
 
 
