@@ -5,4 +5,6 @@ import com.shsxt.crm.po.CustomerLoss;
 
 public interface CustomerLossMapper extends BaseMapper<CustomerLoss,Integer> {
 
+
+
 }

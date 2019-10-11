@@ -1,6 +1,7 @@
 package com.shsxt.crm.controller;
 
 import com.shsxt.base.BaseController;
+import com.shsxt.crm.dto.CusNameAndCusSum;
 import com.shsxt.crm.model.ResultInfo;
 import com.shsxt.crm.po.Customer;
 import com.shsxt.crm.query.CustomerQuery;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -78,6 +80,16 @@ public class CustomerController extends BaseController {
         return success("删除成功");
     }
 
+    @RequestMapping("customerNameAndSum")
+    @ResponseBody
+    public List<CusNameAndCusSum> customerNameAndSum(){
+      return   customerService.queryCustomerNameAndSum();
+    }
 
 
+    @RequestMapping("countLevelByCustomer")
+    @ResponseBody
+    public Map<String,Object>countLevelByCustomer(){
+       return customerService.countLevelByCustomer();
+    }
 }

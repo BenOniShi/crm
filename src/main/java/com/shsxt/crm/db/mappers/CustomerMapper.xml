@@ -303,4 +303,21 @@
         from t_customer
         where name =#{userName}
     </select>
+    <select id="countSumByParams" resultType="com.shsxt.crm.dto.CusNameAndCusSum">
+            select t.name as  cusName, sum(tod.sum) as cusSum
+        from t_customer t
+             left join t_customer_order tco on t.id = tco.cus_id
+             left join t_order_details tod on tco.id = tod.order_id
+        where t.is_valid = 1
+        AND tod.sum IS NOT NULL
+        group by t.name
+
+    </select>
+    <select id="countLevelByCustomer" resultType="java.util.Map">
+        select level, count(level) as count
+    from t_customer
+    where is_valid = 1
+      and level is not null
+    group by level
+    </select>
 </mapper>

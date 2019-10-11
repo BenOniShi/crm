@@ -50,5 +50,12 @@ public class CustomerLossController extends BaseController {
     }
 
 
+    @RequestMapping("updateCustomerLossByLossId")
+    @ResponseBody
+    public ResultInfo updateCustomerLossByLossId(Integer lossid,String mesg){
+        customerLossService.updateCustomerLossByLossId(lossid,mesg);
+        return success();
+    }
+
 
 }

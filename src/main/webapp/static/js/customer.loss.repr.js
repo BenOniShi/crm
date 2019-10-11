@@ -43,3 +43,31 @@ function delCustomerRepr() {
     })
 }
 
+
+function updateCustomerLossState() {
+    var  lossid=$("#lossId").val();
+    $.messager.confirm("来自crm","您确定要流失当前客户吗",function (r) {
+        if (r){
+            $.messager.prompt("来自crm","请输入流失信息",function (t) {
+                $.ajax({
+                    type:'post',
+                    url:ctx+"/customerLoss/updateCustomerLossByLossId",
+                    data:{
+                        lossid:lossid,
+                        mesg:t
+                    },
+                    datatype:'json',
+                    success:function (data) {
+                        if (data.code==200) {
+                            $.messager.alert("来自crm","终止成功，请强制刷新整个页面","info")
+                            location.reload();
+                        }else {
+                            $.messager.alert("来自crm",data.msg,"info")
+                        }
+                    }
+                })
+            })
+        }
+    })
+}
+

@@ -2,14 +2,16 @@ package com.shsxt.crm.services;
 
 import com.shsxt.base.BaseService;
 import com.shsxt.crm.db.dao.CustomerMapper;
+import com.shsxt.crm.dto.CusNameAndCusSum;
 import com.shsxt.crm.po.Customer;
 import com.shsxt.crm.utils.AssertsUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.*;
 import java.util.regex.Pattern;
 
 @Service
@@ -95,5 +97,27 @@ public class CustomerService extends BaseService<Customer, Integer> {
         customer.setUpdateDate(new Date());
         AssertsUtils.isTrue(update(customer)==0,"删除失败");
 
+    }
+
+    public List<CusNameAndCusSum> queryCustomerNameAndSum() {
+        return customerMapper.countSumByParams();
+    }
+
+    public Map<String,Object> countLevelByCustomer() {
+        List<Map<String, Object>> list = customerMapper.countLevelByCustomer();
+        List<Object> result1 = null;
+        List<Object> result2 = null;
+        Map<String,Object> res = new HashMap<>();
+        if (!(CollectionUtils.isEmpty(list))) {
+            for (Map<String, Object> map : list) {
+                result1= new ArrayList<>();
+                result2= new ArrayList<>();
+                result1.add(map.get("level"));
+                result2.add(map.get("count"));
+            }
+            res.put("result1",result1);
+            res.put("result2",result2);
+        }
+        return res;
     }
 }
