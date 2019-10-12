@@ -187,17 +187,47 @@
             <version>1.18.8</version>
             <scope>provided</scope>
         </dependency>
-
-
     </dependencies>
 
+    <profiles>
+        <!-- 默认开发环境 -->
+        <profile>
+            <id>
+                dev
+            </id>
+            <properties>
+                <env>de v</env>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <!-- 测试环境 -->
+        <profile>
+            <id>
+                test
+            </id>
+            <properties>
+                <env>test</env>
+            </properties>
+        </profile>
+        <!-- 生产环境 -->
+        <profile>
+            <id>
+                product
+            </id>
+            <properties>
+                <env>
+                    product
+                </env>
+            </properties>
+        </profile>
+    </profiles>
     <build>
         <finalName>crm</finalName>
-
-
         <resources>
             <resource>
-                <directory>src/main/resources</directory>
+                <directory>src/main/resources/${env}</directory>
             </resource>
             <resource>
                 <directory>src/main/java</directory>
