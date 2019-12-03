@@ -8,8 +8,8 @@
 <div region="north" style="height: 78px;background-color: #E0ECFF">
     <table style="padding: 5px" width="100%">
         <tr>
-            <td width="50%">
-                <img alt="logo" src="${ctx}/static/images/bglogo.png">
+            <td width="40%" height="50px">
+                <#--<img alt="logo" src="${ctx}/static/images/logo.jpg">-->客户关系管理系统
             </td>
             <td valign="bottom" align="right" width="50%">
                 <font size="3">&nbsp;&nbsp;<strong>欢迎：</strong>${(user.userName)!""}</font>【${(user.trueName)!"" }】
@@ -63,9 +63,8 @@
     </div>
 </div>
 <div region="south"  style="height:55px;background-color: #E0ECFF" align="center">
-    版本所有 上海尚学堂 <a href="http://www.shsxt.com" target="_blank">www.shsxt.com</a>(2016-2026)<br/>
-    上海尚学堂地址：上海市松江区荣乐东路2369弄45号绿地伯顿大厦2层 咨询电话：021-67690939<br/>
-	 上海尚学堂智能科技有限公司 的icp备案号 （沪ICP备16053543号）
+    <a href="http://www.baidu.com" target="_blank">www.hahah.com</a>(2016-2026)<br/>
+
 </div>
 
 <div id="dlg" class="easyui-dialog" style="width:400px;height:250px;padding: 10px 20px"

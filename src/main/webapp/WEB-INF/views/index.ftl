@@ -90,8 +90,8 @@
 	<!-- END REGISTRATION FORM -->
 </div>
 <div class="copyright">
-	 上海尚学堂地址：上海市松江区荣乐东路2369弄45号绿地伯顿大厦2层 咨询电话：021-67690939<br/>
-	 上海尚学堂智能科技有限公司 的icp备案号 （沪ICP备16053543号）
+	 <br/>
+
 </div>
 
 <!-- END JAVASCRIPTS -->

@@ -36,7 +36,7 @@ function saveOrUpdateUser() {
         //结果
         success:function (data) {
             //将data装换成可以操作的dom对象
-            data =JSON.parse(data);
+            // data =JSON.parse(data);
             if(data.code==200){
                 closeUserDialog();
                 searchUsersByParams();

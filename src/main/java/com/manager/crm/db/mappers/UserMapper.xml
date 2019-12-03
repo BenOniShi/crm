@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.manager.crm.db.dao.UserMapper">
+    <resultMap id="BaseResultMap" type="com.manager.crm.po.User">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="user_name" property="userName" jdbcType="VARCHAR"/>
+        <result column="user_pwd" property="userPwd" jdbcType="VARCHAR"/>
+        <result column="true_name" property="trueName" jdbcType="VARCHAR"/>
+        <result column="email" property="email" jdbcType="VARCHAR"/>
+        <result column="phone" property="phone" jdbcType="VARCHAR"/>
+        <result column="is_valid" property="isValid" jdbcType="INTEGER"/>
+        <result column="create_date" property="createDate" jdbcType="TIMESTAMP"/>
+        <result column="update_date" property="updateDate" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, user_name, user_pwd, true_name, email, phone, is_valid, create_date, update_date
+  </sql>
+    <select id="queryById" resultType="com.manager.crm.po.User">
+    select *
+    from t_user
+    where id = #{id}
+  </select>
+    <select id="queryUserByUserName" resultType="com.manager.crm.po.User">
+    select *
+    from t_user
+    where user_name=#{userName}
+  </select>
+    <delete id="delete" parameterType="java.lang.Integer">
+    update t_user
+    set is_valid=0
+    where id=#{id}
+  </delete>
+    <!-- useGeneratedKeys 开启返回主键   keyproperty  接收主键的字段   -->
+    <insert id="save" parameterType="com.manager.crm.po.User" useGeneratedKeys="true" keyProperty="id">
+        insert into t_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="userName != null">
+                user_name,
+            </if>
+            <if test="userPwd != null">
+                user_pwd,
+            </if>
+            <if test="trueName != null">
+                true_name,
+            </if>
+            <if test="email != null">
+                email,
+            </if>
+            <if test="phone != null">
+                phone,
+            </if>
+            <if test="isValid != null">
+                is_valid,
+            </if>
+            <if test="createDate != null">
+                create_date,
+            </if>
+            <if test="updateDate != null">
+                update_date,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="userName != null">
+                #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="userPwd != null">
+                #{userPwd,jdbcType=VARCHAR},
+            </if>
+            <if test="trueName != null">
+                #{trueName,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="isValid != null">
+                #{isValid,jdbcType=INTEGER},
+            </if>
+            <if test="createDate != null">
+                #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateDate != null">
+                #{updateDate,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="update" parameterType="com.manager.crm.po.User">
+        update t_user
+        <set>
+            <if test="userName != null">
+                user_name = #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="userPwd != null">
+                user_pwd = #{userPwd,jdbcType=VARCHAR},
+            </if>
+            <if test="trueName != null">
+                true_name = #{trueName,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                email = #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                phone = #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="isValid != null">
+                is_valid = #{isValid,jdbcType=INTEGER},
+            </if>
+            <if test="createDate != null">
+                create_date = #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateDate != null">
+                update_date = #{updateDate,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+
+
+    <resultMap id="user_role_columns" type="User" extends="BaseResultMap">
+        <result column="roleName" property="roleName" jdbcType="VARCHAR"/>
+    </resultMap>
+
+
+    <select id="queryByParams" resultMap="user_role_columns" parameterType="UserQuery">
+        select t.*,
+        group_concat(u.role_name) roleName
+        from t_user t left join t_user_role r on t.id=r.user_id left join t_role u
+        on r.role_id =u.id
+        <where>
+            t.is_valid=1
+            <if test="null != userName and  userName!='' ">
+                and t.user_name like concat('%',#{userName},'%')
+            </if>
+            <if test=" null != phone and  phone!=''">
+                and t.phone =#{phone}
+            </if>
+            <if test=" null != mail and  mail!=''">
+                and t.email =#{mail}
+            </if>
+            group by t.id
+        </where>
+    </select>
+
+</mapper>

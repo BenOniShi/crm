@@ -1,4 +1,4 @@
-function login() {
+ function login() {
     var  userName=$("input[name='username']").val();
     var userPwd=$("input[name='password']").val();
     if(isEmpty(userName)){

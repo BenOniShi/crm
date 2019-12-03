@@ -23,20 +23,20 @@
 
 
         <!--生成Model类存放位置-->
-        <javaModelGenerator targetPackage="com.shsxt.crm.po" targetProject="E:\Demo\crm\src\main\java">
+        <javaModelGenerator targetPackage="com.manager.crm.po" targetProject="E:\Demo\crm\src\main\java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
 
 
         <!--生成映射文件存放位置-->
-        <sqlMapGenerator targetPackage="com.shsxt.crm.db.mappers" targetProject="E:\Demo\crm\src\main\java">
+        <sqlMapGenerator targetPackage="com.manager.crm.db.mappers" targetProject="E:\Demo\crm\src\main\java">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
 
         <!--生成Dao类存放位置-->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.shsxt.crm.db.dao" targetProject="E:\Demo\crm\src\main\java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.manager.crm.db.dao" targetProject="E:\Demo\crm\src\main\java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
